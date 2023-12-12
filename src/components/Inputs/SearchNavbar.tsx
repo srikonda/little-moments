@@ -14,11 +14,12 @@ const SearchNavbar = () => {
                 type="text"
                 value={searchEvents}
                 onChange={handleSearch}
-                placeholder="Search near you"
-                className="w-full px-2 sm:px-4 py-1 sm:py-2  border-2 border-primary rounded-md focus:outline-none focus:ring-1 bg-transparent focus:ring-primary placeholder-primary"
+                placeholder="&#128269; Search nearby places..."
+
+                className="w-full px-2 sm:px-4 py-1 sm:py-2 rounded-md focus:outline-none bg-transparent placeholder-primary"
             />
             <div className='absolute right-5'>
-                <RiSearchFill />
+                {/* <RiSearchFill /> */}
             </div>
         </div>
     </div>

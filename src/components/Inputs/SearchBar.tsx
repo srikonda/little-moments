@@ -15,7 +15,7 @@ const SearchBar = () => {
                 value={searchEvents}
                 onChange={handleSearch}
                 placeholder="Search near you"
-                className="w-full px-4 py-2  border-2 border-primary rounded-md focus:outline-none focus:ring-1 bg-transparent focus:ring-primary placeholder-primary"
+                className="w-full px-4 py-3  border-2 border-primary rounded-md focus:outline-none focus:ring-1 bg-transparent focus:ring-primary placeholder-primary"
             />
             <div className='absolute right-5'>
                 <RiSearchFill />
