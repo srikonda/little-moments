@@ -1,0 +1,49 @@
+'use client'
+
+import { IoMdArrowDropdown } from "react-icons/io";
+import Dropdown from "../Dropdowns/LocationDropdown";
+import LocationDropdownFull from "../Dropdowns/LocationDropdownFull";
+import { useEffect, useState } from "react";
+import CompanyName from "../Texts/CompanyName";
+import SearchBar from "../Inputs/SearchBar";
+import SearchNavbar from "../Inputs/SearchNavbar";
+
+const LeftSide: React.FC = () => {
+  const [showTitle, setShowTitle] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      setShowTitle(scrollY >= 250);
+      setShowSearch(scrollY >= 350);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+    <div className="flex items-center w-full"> 
+      {/* <div className="px-2 sm:px-4 md:px-8 lg:px-12 ">
+        <div className="flex gap-2 sm:gap-6 md:gap-10 my-2">
+        <Dropdown />
+      </div> */}
+      {showTitle && 
+        <div className="transition-transform duration-300 ease-in-out  font-title text-theme-color-1 text-lg sm:text-3xl mx-4">
+          <CompanyName />
+        </div>}
+      <LocationDropdownFull />
+      {
+        showSearch &&
+          <SearchNavbar />
+      }
+    </div>
+  );
+};
+
+export default LeftSide;
