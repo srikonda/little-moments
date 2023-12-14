@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -10,12 +11,12 @@ const RightSide: React.FC = () => {
       <div className="cursor-pointer">
         Download App
       </div>
-      <div className="flex items-center gap-2 py-4 px-2 sm:px-4 md:px-8 lg:px-12 bg-primary text-background cursor-pointer hover:opacity-80">
+      <Link href='/login' className="flex items-center gap-2 py-4 px-2 sm:px-4 md:px-8 lg:px-12 bg-primary text-background cursor-pointer hover:opacity-80">
         <div>Login</div>
         <div>
           <FaArrowRightLong />
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
