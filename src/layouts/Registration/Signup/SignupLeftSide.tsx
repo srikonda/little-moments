@@ -2,9 +2,9 @@
 
 import React, { useContext } from 'react'
 import Title from '@/components/Registration/Title'
-import SignupForm from '@/components/Forms/SignupForm'
+import SignupForm from '@/components/Forms/Registration/SignupForm'
 import { SignupContext, SignupContextProps } from '@/services/Context/SignupContext'
-import SignupOtpForm from '@/components/Forms/SignupOtpForm'
+import SignupOtpForm from '@/components/Forms/Registration/SignupOtpForm'
 import LeftSideNavbar from '../LeftSideNavbar'
 
 

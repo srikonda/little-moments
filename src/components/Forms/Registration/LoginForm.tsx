@@ -1,14 +1,13 @@
 'use client'
 
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import InputText from '../Inputs/InputText';
-import RegistrationButton from '../Buttons/RegistrationButton';
-import OtpInput from '../Inputs/InputOtp';
+import InputText from '../../Inputs/InputText';
+import RegistrationButton from '../../Buttons/RegistrationButton';
+import OtpInput from '../../Inputs/InputOtp';
 import Link from 'next/link';
-import { SignupContext, SignupContextProps } from '@/services/Context/SignupContext';
 
 const schema = yup.object({
     phoneNumber: yup
@@ -20,13 +19,10 @@ const schema = yup.object({
       ),
   }).required();
 
-const SignupOtpForm = () => {
-
+const LoginForm = () => {
     const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(schema)});
     const [otp, setOtp] = useState("");
     const [isOtpInput, setIsOtpInput] = useState<boolean>(false)
-
-    const { setIsSignup } = (useContext(SignupContext) as SignupContextProps);
 
     const onSubmitLogin = (data: any) => {
       console.log("data",data)
@@ -35,17 +31,12 @@ const SignupOtpForm = () => {
 
     const onSubmitOtp = (data: any) => {
       console.log(data)
-      setIsSignup(false)
+      console.log(otp)
     }
 
     const changeNumber = () => {
       setIsOtpInput(false)
     }
-
-    const handleSignupBack = () =>{
-      setIsSignup(true)
-    }
-
   return (
     <>
       <form
@@ -66,8 +57,7 @@ const SignupOtpForm = () => {
             />
             )
           }
-        <RegistrationButton text={isOtpInput ? "Verify Otp" : "Sign Up"} />
-        <div className='flex justify-center text-theme-color-3 mt-2 underline cursor-pointer' onClick={handleSignupBack}>Back</div>
+        <RegistrationButton text={isOtpInput ? "Verify Otp" : "Login"} />
         {
           isOtpInput && (
             <div className='flex justify-between text-theme-color-3 mt-2 underline'>
@@ -83,7 +73,7 @@ const SignupOtpForm = () => {
       </form>
       <div className='flex flex-wrap justify-center gap-2 text-xl'>
         <div>
-          Don't have account ?
+          Dont have account ?
         </div>
         <Link href='/signup' className='text-theme-color-3 font-bold'>
           Signup instead
@@ -93,4 +83,4 @@ const SignupOtpForm = () => {
   )
 }
 
-export default SignupOtpForm
+export default LoginForm

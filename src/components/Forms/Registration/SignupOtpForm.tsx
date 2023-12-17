@@ -1,13 +1,14 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import InputText from '../Inputs/InputText';
-import RegistrationButton from '../Buttons/RegistrationButton';
-import OtpInput from '../Inputs/InputOtp';
+import InputText from '../../Inputs/InputText';
+import RegistrationButton from '../../Buttons/RegistrationButton';
+import OtpInput from '../../Inputs/InputOtp';
 import Link from 'next/link';
+import { SignupContext, SignupContextProps } from '@/services/Context/SignupContext';
 
 const schema = yup.object({
     phoneNumber: yup
@@ -19,10 +20,13 @@ const schema = yup.object({
       ),
   }).required();
 
-const LoginForm = () => {
+const SignupOtpForm = () => {
+
     const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(schema)});
     const [otp, setOtp] = useState("");
     const [isOtpInput, setIsOtpInput] = useState<boolean>(false)
+
+    const { setIsSignup } = (useContext(SignupContext) as SignupContextProps);
 
     const onSubmitLogin = (data: any) => {
       console.log("data",data)
@@ -31,12 +35,17 @@ const LoginForm = () => {
 
     const onSubmitOtp = (data: any) => {
       console.log(data)
-      console.log(otp)
+      setIsSignup(false)
     }
 
     const changeNumber = () => {
       setIsOtpInput(false)
     }
+
+    const handleSignupBack = () =>{
+      setIsSignup(true)
+    }
+
   return (
     <>
       <form
@@ -57,7 +66,8 @@ const LoginForm = () => {
             />
             )
           }
-        <RegistrationButton text={isOtpInput ? "Verify Otp" : "Login"} />
+        <RegistrationButton text={isOtpInput ? "Verify Otp" : "Sign Up"} />
+        <div className='flex justify-center text-theme-color-3 mt-2 underline cursor-pointer' onClick={handleSignupBack}>Back</div>
         {
           isOtpInput && (
             <div className='flex justify-between text-theme-color-3 mt-2 underline'>
@@ -83,4 +93,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default SignupOtpForm

@@ -1,7 +1,7 @@
 import React from 'react'
 import Title from '@/components/Registration/Title'
 import LeftSideNavbar from '../../LeftSideNavbar';
-import SignupPropsForm from '@/components/Forms/SignupPropsForm';
+import SignupPropsForm from '@/components/Forms/Registration/SignupPropsForm';
 
 const LeftSide = () => {
   return (

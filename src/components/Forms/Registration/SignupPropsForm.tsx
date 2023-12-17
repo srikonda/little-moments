@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import InputText from '../Inputs/InputText';
-import RegistrationButton from '../Buttons/RegistrationButton';
+import InputText from '../../Inputs/InputText';
+import RegistrationButton from '../../Buttons/RegistrationButton';
 import Link from 'next/link';
 
 const schema = yup.object({
@@ -22,9 +22,13 @@ const schema = yup.object({
         "Password must be at least 6 characters long and include a letter, a number, and a special character."
       )
       .min(6, "Password must be at least 6 characters long"), 
+    confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), undefined], 'Passwords must match') // Ensure it matches the 'password' field
+    .required('Confirm Password is required.'),
   }).required();
 
-const LoginPropsForm = () => {
+const SignupPropsForm = () => {
     const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(schema)});
 
     const onSubmitLogin = (data: any) => {
@@ -36,18 +40,19 @@ const LoginPropsForm = () => {
       <form className='py-8' onSubmit={ handleSubmit(onSubmitLogin)}>
         <InputText name="email" type="email" placeholder='Enter email' register={register} required error={errors.email?.message} />
         <InputText name="password" type="password" placeholder='Enter password' register={register} required error={errors.password?.message} />
-        <RegistrationButton text="Login" />
+        <InputText name="confirmPassword" type="password" placeholder='Enter confirm password' register={register} required error={errors.confirmPassword?.message} />
+        <RegistrationButton text="Sign Up" />
       </form>
       <div className='flex flex-wrap justify-center gap-2 text-xl'>
         <div>
-          Don't have account ?
+          Already have account ?
         </div>
-        <Link href='/signup/props' className='text-theme-color-3 font-bold'>
-          Signup instead
+        <Link href='/login/props' className='text-theme-color-3 font-bold'>
+          Login instead
         </Link>
       </div>
     </>
   )
 }
 
-export default LoginPropsForm
+export default SignupPropsForm

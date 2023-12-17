@@ -23,7 +23,7 @@ const Card: React.FC<ICardProps> = ({title, description, badgeText}) => {
             <Badge text={badgeText} />
          </div>
          <div className='absolute group-hover:scale-90 transition-transform duration-300 text-secondary bottom-1 p-3'>
-            <div className='sm:text-2xl font-bold'>
+            <div className='text-xl font-bold'>
                 {title}
             </div>
             <div className='text-sm'>

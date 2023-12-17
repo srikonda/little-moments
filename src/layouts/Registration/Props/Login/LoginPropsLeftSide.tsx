@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from '@/components/Registration/Title'
-import LoginPropsForm from '@/components/Forms/LoginPropsForm';
+import LoginPropsForm from '@/components/Forms/Registration/LoginPropsForm';
 import LeftSideNavbar from '../../LeftSideNavbar';
 
 const LeftSide = () => {
