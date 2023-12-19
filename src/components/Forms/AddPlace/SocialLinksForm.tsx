@@ -3,7 +3,6 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import InputText from "../../Inputs/InputText";
 import RegistrationButton from "../../Buttons/RegistrationButton";
 import { useContext, useEffect } from "react";
 import {
@@ -16,30 +15,26 @@ import InputTextSocialLinks from "@/components/Inputs/InputTextSocialLinks";
 
 const schema = yup
   .object({
-    placeName: yup
+    facebook: yup
       .string()
-      .required("Place name is required.")
-      .min(3, "Place name must be at least 3 characters.")
-      .max(100, "Place name must not exceed 20 characters."),
-    email: yup
+      .url("Please enter a valid URL")
+      .min(3, "Facebook must be at least 3 characters.")
+      .max(100, "Facebook must not exceed 20 characters."),
+    instagram: yup
       .string()
-      .trim()
-      .required("Email is required.")
-      .email("Invalid email format."),
-    phoneNumber: yup
+      .url("Please enter a valid URL")
+      .min(3, "Instagram must be at least 3 characters.")
+      .max(100, "Instagram must not exceed 20 characters."),
+    youtube: yup
       .string()
-      .required("Phone number is required.")
-      .matches(
-        /^[0-9]{10}$/,
-        "Phone number must be a 10-digit number without any special characters."
-      ),
-    altranativePhoneNumber: yup
+      .url("Please enter a valid URL")
+      .min(3, "Youtube must be at least 3 characters.")
+      .max(100, "Youtube must not exceed 20 characters."),
+    twitter: yup
       .string()
-      .required("Phone number is required.")
-      .matches(
-        /^[0-9]{10}$/,
-        "Phone number must be a 10-digit number without any special characters."
-      ),
+      .url("Please enter a valid URL")
+      .min(3, "Twitter must be at least 3 characters.")
+      .max(100, "Twitter must not exceed 20 characters."),
   })
   .required();
 
@@ -71,46 +66,43 @@ const SocialLinksForm = () => {
     <>
       <form className="py-8" onSubmit={handleSubmit(onSubmitSignup)}>
         <InputTextSocialLinks 
-          name="placeName"
+          name="facebook"
           type="text"
-          placeholder="Place name"
+          placeholder="Facebook"
           register={register}
-          // icon=
-          required
-          error={errors.placeName?.message}
+          icon="facebook"
+          required={false}
+          error={errors.facebook?.message}
         />
-        <InputText
-          name="email"
-          type="email"
-          placeholder="Email"
-          register={register}
-          required
-          error={errors.email?.message}
-        />
-        <InputText
-          name="phoneNumber"
+        <InputTextSocialLinks 
+          name="instagram"
           type="text"
-          placeholder="Phone number"
+          placeholder="Instagram"
           register={register}
-          required
-          error={errors.phoneNumber?.message}
+          icon="instagram"
+          required={false}
+          error={errors.instagram?.message}
         />
-        <InputText
-          name="altranativePhoneNumber"
+        <InputTextSocialLinks 
+          name="youtube"
           type="text"
-          placeholder="Altranative phone number"
+          placeholder="youtube"
           register={register}
-          required
-          error={errors.altranativePhoneNumber?.message}
+          icon="youtube"
+          required={false}
+          error={errors.youtube?.message}
+        />
+        <InputTextSocialLinks 
+          name="twitter"
+          type="text"
+          placeholder="Twitter"
+          register={register}
+          icon="twitter"
+          required={false}
+          error={errors.twitter?.message}
         />
         <div className="flex gap-4">
-          <button type="button" className="w-fit flex items-center gap-2 bg-background text-primary mt-8 p-4 rounded-md border-2 border-primary text-2xl font-bold"
-            onClick={handleBack}
-          >
-            <FaArrowLeftLong />
-            Back
-          </button>
-          <RegistrationButton text="Continue" />
+          <RegistrationButton text="Save" />
         </div>
       </form>
     </>

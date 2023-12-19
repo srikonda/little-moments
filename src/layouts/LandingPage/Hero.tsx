@@ -7,7 +7,6 @@ import { paddingScreen } from '@/services/Utilities/style';
 
 const Hero = () => {
   return (
-    // <div  className={`${paddingScreen} mt-20`}>
     <div  className="padding mt-20">
       <Title />
       <SearchBar />

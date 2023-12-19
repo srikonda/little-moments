@@ -5,7 +5,6 @@ import React from 'react'
 
 const PopularPlaces = () => {
   return (
-    // <div className={`${paddingScreen}`}>
     <div className="padding">
         <Title />
         <Cards />

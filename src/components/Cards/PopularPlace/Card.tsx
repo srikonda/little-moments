@@ -18,7 +18,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ popular, heading, rating, date, title, price, location, phone, image }) => {
     return (
-        <div className='rounded-lg hover:scale-110 transition-transform duration-300  bg-secondary border-2 border-primary drop-shadow-[10px_10px_0_rgba(0,0,0,1)]'>
+        <div className='rounded-lg min-w-[200px] max-w-[280px] hover:scale-105 transition-transform duration-300  bg-secondary border-2 border-primary drop-shadow-[10px_10px_0_rgba(0,0,0,1)]'>
             <div className='rounded-md w-full h-[250px] group overflow-hidden relative'>
                 <Image 
                     src={image} 
@@ -26,7 +26,7 @@ const Card: React.FC<CardProps> = ({ popular, heading, rating, date, title, pric
                     width={500}
                     height={500}
                     objectFit='cover'
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-300" />
                 {
                     popular && (
                         <div className='absolute top-4 right-4 bg-theme-color-4 border-2 border-primary p-1 px-2 rounded-full text-xs font-bold'>
@@ -50,7 +50,7 @@ const Card: React.FC<CardProps> = ({ popular, heading, rating, date, title, pric
                     </div>
                     <div>{date}</div>
                 </div> */}
-                <div className='font-bold'>
+                <div className='w-full font-bold'>
                     {title}
                 </div>
                 <div className='my-4 font-semibold'>

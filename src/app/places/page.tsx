@@ -1,20 +1,16 @@
-import Footer from "@/layouts/CommonLayouts/Footer";
-import Marquee from "@/layouts/CommonLayouts/Marquee";
+import Filter from "@/components/Sidebar/Filter";
 import Navbar from "@/layouts/CommonLayouts/Navbar";
-import AboutUs from "@/layouts/LandingPage/AboutUs";
-import Hero from "@/layouts/LandingPage/Hero";
-import PopularPlaces from "@/layouts/LandingPage/PopularPlaces";
+import Hero from "@/layouts/Places/Hero";
 
 export default function Home() {
   return (
     <div>
       <Navbar />
-      <Hero />
-      <Marquee />
-      <PopularPlaces />
-      <AboutUs />
-      <Marquee />
-      <Footer />
+      <div className="flex justify-between">
+        <Filter />
+        <Hero />
+      </div>
+      {/* <Cards /> */}
     </div>
   );
 }

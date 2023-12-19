@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { UseFormRegister } from "react-hook-form";
+import {RiErrorWarningFill} from 'react-icons/ri'
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 type InputTextSocialLinksProps = {
   type: string;
@@ -13,7 +16,20 @@ type InputTextSocialLinksProps = {
 }
 const InputTextSocialLinks = ({type, name, placeholder, register, required, icon, disabled, error}: InputTextSocialLinksProps) => {
 
-  const IconComponent = icon ? require(`react-icons/${icon}`).default : "RiErrorWarningFill";
+  const IconComponent = (() => {
+    switch (icon) {
+      case "facebook":
+        return FaFacebookF;
+      case "instagram":
+        return FaInstagram;
+      case "youtube":
+        return FaYoutube;
+      case "twitter":
+        return FaXTwitter;
+      default:
+        return RiErrorWarningFill;
+    }
+  })();
 
   return (
     <div>
@@ -25,7 +41,7 @@ const InputTextSocialLinks = ({type, name, placeholder, register, required, icon
             {...register(name, { required })}
             disabled={disabled} 
         />
-        <div>
+        <div className='btn absolute flex right-2 top-2 transform translate-y-6'>
           <IconComponent />
         </div>
       </div>

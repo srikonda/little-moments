@@ -9,7 +9,7 @@ const SocialLinksLeftSide = () => {
     <div className="registration-left">
       <Tracker />
       <div className="registration-form h-fit max-h-[650px] overflow-auto">
-        <Title text="Upload Image" />
+        <Title text="Social Links" />
         <SocialLinksForm />
       </div>
     </div>
