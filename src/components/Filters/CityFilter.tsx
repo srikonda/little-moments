@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 const CityFilter = () => {
+  const [selectedCities, setSelectedCities] = useState<string[]>([])
 
-    const [selectedCities, setSelectedCities] = useState<string[]>([]);
-
-  const handleSelectedCities = (event: { target: { value: any; checked: any; }; }) => {
-    const cityName = event.target.value;
+  const handleSelectedCities = (event: { target: { value: any; checked: any } }) => {
+    const cityName = event.target.value
     if (event.target.checked) {
-      setSelectedCities((prevSelectedCities) => [...prevSelectedCities, cityName]);
+      setSelectedCities(prevSelectedCities => [...prevSelectedCities, cityName])
     } else {
-      setSelectedCities((prevSelectedCities) =>
-        prevSelectedCities.filter((city) => city !== cityName)
-      );
+      setSelectedCities(prevSelectedCities => prevSelectedCities.filter(city => city !== cityName))
     }
-  };
+  }
 
   return (
     <>
@@ -79,12 +76,10 @@ const CityFilter = () => {
           />
           <label htmlFor="mumbai">Mumbai</label>
         </div>
-        <div className="text-theme-color-3 underline cursor-pointer">
-          more+
-        </div>
+        <div className="text-theme-color-3 underline cursor-pointer">more+</div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CityFilter;
+export default CityFilter

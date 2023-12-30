@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -21,39 +20,39 @@ select:-webkit-autofill:focus {
 } */
 
 .range-slider {
-    width: 100%;
-  }
-  
-  .slider {
-    position: relative;
-    height: 1px;
-    background-color: #ccc;
-    border-radius: 3px;
-  }
-  
-  .progress {
-    position: absolute;
-    height: 100%;
-    background-color: #4caf50; /* Green color for progress */
-    border-radius: 3px;
-  }
+  width: 100%;
+}
 
-  .slider .thumb {
-    width: 23px;
-    height: 23px;
-    cursor: grab;
-    background: #fff;
-    border-radius: 50%;
-    border: 2px solid #275efe;
-    top: -10px;
-  }
+.slider {
+  position: relative;
+  height: 1px;
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.progress {
+  position: absolute;
+  height: 100%;
+  background-color: #4caf50; /* Green color for progress */
+  border-radius: 3px;
+}
+
+.slider .thumb {
+  width: 23px;
+  height: 23px;
+  cursor: grab;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #275efe;
+  top: -10px;
+}
 .padding {
-    @apply mx-5 sm:mx-12 md:mx-24 lg:mx-44 xl:mx-64 my-12;
+  @apply mx-5 sm:mx-12 md:mx-24 lg:mx-44 xl:mx-64 my-12;
 }
 
 .registration-left {
-    @apply relative col-span-12 md:col-span-8 flex flex-col justify-center items-center m-4
+  @apply relative col-span-12 md:col-span-8 flex flex-col justify-center items-center m-4;
 }
 .registration-form {
-    @apply w-full md:w-5/6 lg:w-4/6 xl:w-3/6 h-fit bg-secondary p-12 rounded-md border-2 border-primary drop-shadow-[10px_10px_0_rgba(0,0,0,1)]
+  @apply w-full md:w-5/6 lg:w-4/6 xl:w-3/6 h-fit bg-secondary p-12 rounded-md border-2 border-primary drop-shadow-[10px_10px_0_rgba(0,0,0,1)];
 }

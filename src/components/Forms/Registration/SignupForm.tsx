@@ -1,16 +1,13 @@
-"use client";
+"use client"
 
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import InputText from "../../Inputs/InputText";
-import RegistrationButton from "../../Buttons/RegistrationButton";
-import Link from "next/link";
-import {
-  SignupContext,
-  SignupContextProps,
-} from "@/services/Context/SignupContext";
+import React, { useContext } from "react"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import InputText from "../../Inputs/InputText"
+import RegistrationButton from "../../Buttons/RegistrationButton"
+import Link from "next/link"
+import { SignupContext, SignupContextProps } from "@/services/Context/SignupContext"
 
 const schema = yup
   .object({
@@ -27,17 +24,14 @@ const schema = yup
     age: yup
       .string()
       .required("Age is required.")
-      .matches(
-        /^[0-9]+$/,
-        "Age must be number without any special characters."
-      ),
+      .matches(/^[0-9]+$/, "Age must be number without any special characters."),
     gender: yup
       .string()
       .required("Gender is required.")
       .notOneOf(["", "Gender"], "Gender is required.")
       .oneOf(["male", "female", "other"], "Invalid gender."),
   })
-  .required();
+  .required()
 
 const SignupForm = () => {
   const {
@@ -45,16 +39,16 @@ const SignupForm = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(schema) })
 
-  const { setIsSignup } = useContext(SignupContext) as SignupContextProps;
+  const { setIsSignup } = useContext(SignupContext) as SignupContextProps
 
   const onSubmitSignup = (data: any) => {
-    console.log("data", data);
-    setIsSignup(false);
-  };
+    console.log("data", data)
+    setIsSignup(false)
+  }
 
-  const isGenderSelected = watch("gender");
+  const isGenderSelected = watch("gender")
 
   return (
     <>
@@ -86,10 +80,8 @@ const SignupForm = () => {
         {/* <InputText name="gender" type="text" placeholder='Gender' register={register} required error={errors.gender?.message} /> */}
         <select
           id="gender"
-          className={`block px-0 w-full rounded-sm py-3 my-3 text-xl bg-transparent border-b border-primary focus:outline-none focus:ring-transparent appearance-none peer 
-          ${
-            isGenderSelected ? "text-black" : "text-gray-400"
-          }`}
+          className={`block w-full autofill:bg-yellow-200 bg-transparent rounded-lg p-4 my-3 border-2  text-xl border-primary focus:outline-none focus:ring-transparent appearance-none peer 
+          ${isGenderSelected ? "text-black" : "text-gray-400"}`}
           {...register("gender")}
         >
           <option value="" selected className="text-black">
@@ -99,9 +91,7 @@ const SignupForm = () => {
           <option value="male">Male</option>
           <option value="other">Other</option>
         </select>
-        {errors.gender?.message && (
-          <p className="text-red-600 text-sm">{errors.gender?.message}</p>
-        )}
+        {errors.gender?.message && <p className="text-red-600 text-sm">{errors.gender?.message}</p>}
         <RegistrationButton text="Continue" />
       </form>
       <div className="flex flex-wrap justify-center gap-2 text-xl">
@@ -111,7 +101,7 @@ const SignupForm = () => {
         </Link>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SignupForm;
+export default SignupForm

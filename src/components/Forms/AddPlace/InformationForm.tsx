@@ -1,22 +1,19 @@
-"use client";
+"use client"
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import InputText from "../../Inputs/InputText";
-import RegistrationButton from "../../Buttons/RegistrationButton";
-import { useContext, useEffect, useState } from "react";
-import {
-  TrackerContext,
-  TrackerContextProps,
-} from "@/services/Context/TrackerContext";
-import { useRouter } from "next/navigation";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import InputTextarea from "@/components/Inputs/InputTextarea";
-import InputRateCard from "@/components/Inputs/InputRateCard";
-import InputTime from "@/components/Inputs/InputTime";
-import InputCategory from "@/components/Inputs/InputCategory";
-import InputAge from "@/components/Inputs/InputAge";
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import InputText from "../../Inputs/InputText"
+import RegistrationButton from "../../Buttons/RegistrationButton"
+import { useContext, useEffect } from "react"
+import { TrackerContext, TrackerContextProps } from "@/services/Context/TrackerContext"
+import { useRouter } from "next/navigation"
+import { FaArrowLeftLong } from "react-icons/fa6"
+import InputTextarea from "@/components/Inputs/InputTextarea"
+import InputRateCard from "@/components/Inputs/InputRateCard"
+import InputTime from "@/components/Inputs/InputTime"
+import InputCategory from "@/components/Inputs/InputCategory"
+import InputAge from "@/components/Inputs/InputAge"
 
 const schema = yup
   .object({
@@ -33,10 +30,7 @@ const schema = yup
     contactnumber: yup
       .string()
       .required("Phone number is required.")
-      .matches(
-        /^[0-9]{10}$/,
-        "Phone number must be a 10-digit number without any special characters."
-      ),
+      .matches(/^[0-9]{10}$/, "Phone number must be a 10-digit number without any special characters."),
     category: yup
       .string()
       .required("Place name is required.")
@@ -52,29 +46,21 @@ const schema = yup
       .required("Starting Age is required.")
       .positive("Starting Age must be a positive number.")
       .integer("Starting Age must be an integer.")
-      .test(
-        "is-less-than-ending-age",
-        "Starting Age must be less than Ending Age",
-        function (value) {
-          const endingAge = this.parent.endingAge;
-          return value < endingAge;
-        }
-      ),
+      .test("is-less-than-ending-age", "Starting Age must be less than Ending Age", function (value) {
+        const endingAge = this.parent.endingAge
+        return value < endingAge
+      }),
     endingAge: yup
       .number()
       .required("Ending Age is required.")
       .positive("Ending Age must be a positive number.")
       .integer("Ending Age must be an integer.")
-      .test(
-        "is-greater-than-starting-age",
-        "Ending Age must be greater than Starting Age",
-        function (value) {
-          const startingAge = this.parent.startingAge;
-          return value > startingAge;
-        }
-      ),
+      .test("is-greater-than-starting-age", "Ending Age must be greater than Starting Age", function (value) {
+        const startingAge = this.parent.startingAge
+        return value > startingAge
+      }),
   })
-  .required();
+  .required()
 
 const InformationForm = () => {
   const {
@@ -82,24 +68,24 @@ const InformationForm = () => {
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(schema) })
 
-  const { push } = useRouter();
+  const { push } = useRouter()
 
-  const { setIsTracker } = useContext(TrackerContext) as TrackerContextProps;
+  const { setIsTracker } = useContext(TrackerContext) as TrackerContextProps
 
   useEffect(() => {
-    setIsTracker(3);
-  }, [setIsTracker]);
+    setIsTracker(3)
+  }, [setIsTracker])
 
   const onSubmitSignup = (data: any) => {
-    console.log("data", data);
-    push("/add-place/information");
-  };
+    console.log("data", data)
+    push("/add-place/upload-images")
+  }
 
   const handleBack = () => {
-    push("/add-place");
-  };
+    push("/add-place")
+  }
 
   return (
     <>
@@ -122,11 +108,41 @@ const InformationForm = () => {
           required
           error={errors.placeDescription?.message}
         />
-        <InputCategory name="category" watch={watch} category={["a","b","c","d"]} placeholder="Category" register={register} required error={errors.category?.message} />
-        <InputCategory name="subCategory" watch={watch} category={["a","b","c","d"]} placeholder="Sub Category" register={register} required error={errors.subCategory?.message} />
+        <InputCategory
+          name="category"
+          watch={watch}
+          category={["a", "b", "c", "d"]}
+          placeholder="Category"
+          register={register}
+          required
+          error={errors.category?.message}
+        />
+        <InputCategory
+          name="subCategory"
+          watch={watch}
+          category={["a", "b", "c", "d"]}
+          placeholder="Sub Category"
+          register={register}
+          required
+          error={errors.subCategory?.message}
+        />
         <div className="flex gap-4">
-          <InputAge name="startingAge" watch={watch} placeholder="Starting Age" register={register} required error={errors.startingAge?.message} />
-          <InputAge name="endingAge" watch={watch} placeholder="Ending Age" register={register} required error={errors.endingAge?.message} />
+          <InputAge
+            name="startingAge"
+            watch={watch}
+            placeholder="Starting Age"
+            register={register}
+            required
+            error={errors.startingAge?.message}
+          />
+          <InputAge
+            name="endingAge"
+            watch={watch}
+            placeholder="Ending Age"
+            register={register}
+            required
+            error={errors.endingAge?.message}
+          />
         </div>
         <div className="flex gap-4">
           <button
@@ -141,7 +157,7 @@ const InformationForm = () => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default InformationForm;
+export default InformationForm

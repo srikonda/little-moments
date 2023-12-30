@@ -1,32 +1,36 @@
-import React from 'react';
-import { UseFormRegister, UseFormWatch } from 'react-hook-form';
-import OtpInput from './InputOtp';
+import React, { useEffect } from "react"
+import { UseFormRegister, UseFormWatch } from "react-hook-form"
 
 type InputCategoryProps = {
-  name: string;
-  category: string[];
-  placeholder: string;
-  register: UseFormRegister<any>;
-  watch: UseFormWatch<any>;
-  required: boolean;
-  error: string | undefined;
-};
+  name: string
+  category: string[]
+  placeholder: string
+  register: UseFormRegister<any>
+  watch: UseFormWatch<any>
+  required: boolean
+  error?: string | undefined
+}
 
-const InputCategory = ({ name, category, placeholder, register, watch, required, error }: InputCategoryProps) => {
-  const selectedValue = watch(name);
-  console.log(selectedValue)
+const InputCategory = ({
+  name,
+  category,
+  placeholder,
+  register,
+  watch,
+  required,
+  error,
+}: InputCategoryProps) => {
+  const selectedValue = watch(name, "")
   return (
-    <div>
+    <div className="w-full">
       <div className="flex relative">
         <select
-          className={`w-full rounded-sm py-3 my-3 ${
-            selectedValue!=="" ? 'text-black' : 'text-gray-400'
-          } border-b text-xl border-primary focus:outline-none focus:ring-transparent`}
+          className={`w-full bg-transparent rounded-lg p-2 my-3 border-2  text-xl border-primary focus:outline-none focus:ring-transparent ${
+            selectedValue !== "" ? "text-black" : "text-gray-400"
+          } `}
           {...register(name, { required })}
         >
-          <option value="" >
-            {placeholder}
-          </option>
+          <option value="">{placeholder}</option>
           {category.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -36,7 +40,7 @@ const InputCategory = ({ name, category, placeholder, register, watch, required,
       </div>
       {error && <p className="text-red-600 text-sm">{error}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default InputCategory;
+export default InputCategory

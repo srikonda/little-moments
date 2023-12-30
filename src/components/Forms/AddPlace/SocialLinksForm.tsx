@@ -1,17 +1,13 @@
-"use client";
+"use client"
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import RegistrationButton from "../../Buttons/RegistrationButton";
-import { useContext, useEffect } from "react";
-import {
-  TrackerContext,
-  TrackerContextProps,
-} from "@/services/Context/TrackerContext";
-import { useRouter } from "next/navigation";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import InputTextSocialLinks from "@/components/Inputs/InputTextSocialLinks";
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import RegistrationButton from "../../Buttons/RegistrationButton"
+import { useContext, useEffect } from "react"
+import { TrackerContext, TrackerContextProps } from "@/services/Context/TrackerContext"
+import { useRouter } from "next/navigation"
+import InputTextSocialLinks from "@/components/Inputs/InputTextSocialLinks"
 
 const schema = yup
   .object({
@@ -36,28 +32,28 @@ const schema = yup
       .min(3, "Twitter must be at least 3 characters.")
       .max(100, "Twitter must not exceed 20 characters."),
   })
-  .required();
+  .required()
 
 const SocialLinksForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(schema) })
 
-  const { push } = useRouter();
+  const { push } = useRouter()
 
-  const { setIsTracker } = useContext(TrackerContext) as TrackerContextProps;
+  const { setIsTracker } = useContext(TrackerContext) as TrackerContextProps
 
   useEffect(() => {
-    setIsTracker(5);
-  }, [setIsTracker]);
+    setIsTracker(5)
+  }, [setIsTracker])
 
   const onSubmitSignup = (data: any) => {
-    console.log("data", data);
-    push("/add-place/business-details");
-  };
- 
+    console.log("data", data)
+    push("/")
+  }
+
   const handleBack = () => {
     push("/");
   };
@@ -65,7 +61,7 @@ const SocialLinksForm = () => {
   return (
     <>
       <form className="py-8" onSubmit={handleSubmit(onSubmitSignup)}>
-        <InputTextSocialLinks 
+        <InputTextSocialLinks
           name="facebook"
           type="text"
           placeholder="Facebook"
@@ -74,7 +70,7 @@ const SocialLinksForm = () => {
           required={false}
           error={errors.facebook?.message}
         />
-        <InputTextSocialLinks 
+        <InputTextSocialLinks
           name="instagram"
           type="text"
           placeholder="Instagram"
@@ -83,7 +79,7 @@ const SocialLinksForm = () => {
           required={false}
           error={errors.instagram?.message}
         />
-        <InputTextSocialLinks 
+        <InputTextSocialLinks
           name="youtube"
           type="text"
           placeholder="youtube"
@@ -92,7 +88,7 @@ const SocialLinksForm = () => {
           required={false}
           error={errors.youtube?.message}
         />
-        <InputTextSocialLinks 
+        <InputTextSocialLinks
           name="twitter"
           type="text"
           placeholder="Twitter"
@@ -106,7 +102,7 @@ const SocialLinksForm = () => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default SocialLinksForm;
+export default SocialLinksForm

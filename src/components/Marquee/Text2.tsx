@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react"
 
 interface Text2Props {
-    text: string;
+  text: string
 }
 
-const Text2: React.FC<Text2Props>  = ({text}) => {
+const Text2: React.FC<Text2Props> = ({ text }) => {
   return (
-    <div className='mx-24 sm:mx-36 md:mx-48 lg:mx-60 p-2 px-4 bg-primary text-secondary rounded-full'>{text}</div>
+    <div className="mx-24 sm:mx-36 md:mx-48 lg:mx-60 p-2 px-4 bg-primary text-secondary rounded-full">
+      {text}
+    </div>
   )
 }
 

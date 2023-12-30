@@ -1,19 +1,16 @@
-"use client";
+"use client"
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import InputText from "../../Inputs/InputText";
-import RegistrationButton from "../../Buttons/RegistrationButton";
-import { useContext, useEffect, useState } from "react";
-import {
-  TrackerContext,
-  TrackerContextProps,
-} from "@/services/Context/TrackerContext";
-import { useRouter } from "next/navigation";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import InputTextarea from "@/components/Inputs/InputTextarea";
-import InputFile from "@/components/Inputs/InputFile";
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import InputText from "../../Inputs/InputText"
+import RegistrationButton from "../../Buttons/RegistrationButton"
+import { useContext, useEffect } from "react"
+import { TrackerContext, TrackerContextProps } from "@/services/Context/TrackerContext"
+import { useRouter } from "next/navigation"
+import { FaArrowLeftLong } from "react-icons/fa6"
+import InputTextarea from "@/components/Inputs/InputTextarea"
+import InputFile from "@/components/Inputs/InputFile"
 
 const schema = yup
   .object({
@@ -29,77 +26,65 @@ const schema = yup
       .max(1000, "Description can be maximum 250 characters long."),
     gstin: yup
       .mixed()
-      .test("fileSize", "File size is too large", (value) => {
-        // Validate file size if needed
-        // Example: return value && value[0].size <= 1024 * 1024; // 1 MB
-        return true; // For simplicity, always return true for now
+      .test("fileSize", "File size is too large", value => {
+        return true // For simplicity, always return true for now
       })
-      .test("fileType", "Invalid file type", (value) => {
-        // Validate file type if needed
-        // Example: return value && ['image/jpeg', 'image/png'].includes(value[0].type);
-        return true; // For simplicity, always return true for now
+      .test("fileType", "Invalid file type", value => {
+        return true // For simplicity, always return true for now
       })
       .nullable()
       .required("GSTIN file is required."),
     pan: yup
       .mixed()
-      .test("fileSize", "File size is too large", (value) => {
-        // Validate file size if needed
-        // Example: return value && value[0].size <= 1024 * 1024; // 1 MB
-        return true; // For simplicity, always return true for now
+      .test("fileSize", "File size is too large", value => {
+        return true // For simplicity, always return true for now
       })
-      .test("fileType", "Invalid file type", (value) => {
+      .test("fileType", "Invalid file type", value => {
         // Validate file type if needed
         // Example: return value && ['image/jpeg', 'image/png'].includes(value[0].type);
-        return true; // For simplicity, always return true for now
+        return true // For simplicity, always return true for now
       })
       .nullable()
       .required("Pan Card file is required."),
     pocPhoneNumber: yup
       .string()
       .required("Phone number is required.")
-      .matches(
-        /^[0-9]{10}$/,
-        "Phone number must be a 10-digit number without any special characters."
-      ),
+      .matches(/^[0-9]{10}$/, "Phone number must be a 10-digit number without any special characters."),
     pocName: yup
       .string()
-      .required("Description is required.")
-      .min(10, "Description must be at least 10 characters long.")
-      .max(1000, "Description can be maximum 250 characters long."),
+      .required("POC Name is required.")
+      .max(1000, "POC name can be maximum 250 characters long."),
     pocDesignation: yup
       .string()
       .required("Phone number is required.")
-      .matches(
-        /^[0-9]{10}$/,
-        "Phone number must be a 10-digit number without any special characters."
-      ),
+      .required("POC designation is required.")
+      .max(1000, "POC designation can be maximum 250 characters long."),
   })
-  .required();
+  .required()
 
 const BusinessDetailsForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(schema) })
 
-  const { push } = useRouter();
+  const { push } = useRouter()
 
-  const { setIsTracker } = useContext(TrackerContext) as TrackerContextProps;
+  const { setIsTracker } = useContext(TrackerContext) as TrackerContextProps
 
   useEffect(() => {
-    setIsTracker(2);
-  }, [setIsTracker]);
+    setIsTracker(2)
+  }, [setIsTracker])
 
   const onSubmitSignup = (data: any) => {
-    console.log("data", data);
-    push("/add-place/information");
-  };
+    console.log("data", data)
+    push("/add-place/information")
+  }
 
   const handleBack = () => {
-    push("/add-place");
-  };
+    push("/add-place")
+  }
 
   return (
     <>
@@ -173,7 +158,7 @@ const BusinessDetailsForm = () => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default BusinessDetailsForm;
+export default BusinessDetailsForm

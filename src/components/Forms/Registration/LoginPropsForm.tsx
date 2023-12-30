@@ -1,42 +1,38 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import InputText from "../../Inputs/InputText";
-import RegistrationButton from "../../Buttons/RegistrationButton";
-import Link from "next/link";
+import React from "react"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import InputText from "../../Inputs/InputText"
+import RegistrationButton from "../../Buttons/RegistrationButton"
+import Link from "next/link"
 
 const schema = yup
   .object({
-    email: yup
-      .string()
-      .trim()
-      .required("Email is required.")
-      .email("Invalid email format."),
+    email: yup.string().trim().required("Email is required.").email("Invalid email format."),
     password: yup
       .string()
       .required("Password is required.")
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[a-zA-Z\d@$!%*#?&]+$/,
-        "Password must be at least 6 characters long and include a letter, a number, and a special character."
+        "Password must be at least 6 characters long and include a letter, a number, and a special character.",
       )
       .min(6, "Password must be at least 6 characters long"),
   })
-  .required();
+  .required()
 
 const LoginPropsForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmitLogin = (data: any) => {
-    console.log("data", data);
-  };
+    console.log("data", data)
+  }
 
   return (
     <>
@@ -66,7 +62,7 @@ const LoginPropsForm = () => {
         </Link>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default LoginPropsForm;
+export default LoginPropsForm

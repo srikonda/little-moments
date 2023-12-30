@@ -1,6 +1,6 @@
-import Filter from "@/components/Sidebar/Filter";
-import Navbar from "@/layouts/CommonLayouts/Navbar";
-import Hero from "@/layouts/Places/Hero";
+import Filter from "@/components/Sidebar/Filter"
+import Navbar from "@/layouts/CommonLayouts/Navbar"
+import Hero from "@/layouts/PlacesPage/Hero"
 
 export default function Home() {
   return (
@@ -12,5 +12,5 @@ export default function Home() {
       </div>
       {/* <Cards /> */}
     </div>
-  );
+  )
 }

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react"
 
 const CompanyName = () => {
-  return (
-    <div>LITTLE MOMENTS</div>
-  )
+  return <div className="whitespace-nowrap">LITTLE MOMENTS</div>
 }
 
 export default CompanyName

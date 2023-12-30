@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
+import React, { useState } from "react"
+import { IoMdArrowDropdown } from "react-icons/io"
 
 const Dropdown = () => {
-  const [dropdown, setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState(false)
 
   const handleDropdown = () => {
-    setDropdown(!dropdown);
-  };
+    setDropdown(!dropdown)
+  }
   return (
     <div className="relative inline-block text-left">
       <div
@@ -55,6 +55,6 @@ const Dropdown = () => {
         </div>
       )}
     </div>
-  );
-};
-export default Dropdown;
+  )
+}
+export default Dropdown

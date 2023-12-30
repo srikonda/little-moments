@@ -1,5 +1,5 @@
-import TrackerProvider from "@/services/Context/TrackerContext";
-import React from "react";
+import TrackerProvider from "@/services/Context/TrackerContext"
+import React from "react"
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -8,7 +8,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         <main>{children}</main>
       </TrackerProvider>
     </>
-  );
-};
+  )
+}
 
-export default layout;
+export default layout

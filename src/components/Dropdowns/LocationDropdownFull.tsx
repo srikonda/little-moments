@@ -1,18 +1,20 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
+import React, { useState } from "react"
+import { IoMdArrowDropdown } from "react-icons/io"
 
 const LocationDropdownFull = () => {
-  const [dropdown, setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState(false)
 
   const handleDropdown = () => {
-    setDropdown(!dropdown);
-  };
+    setDropdown(!dropdown)
+  }
   return (
-    <div className="relative hidden sm:inline-block text-left">
-      <div className="flex items-center gap-2 py-4 px-2 sm:px-4 md:px-8 lg:px-12 bg-theme-color-1 text-background cursor-pointer hover:opacity-80"
-      onClick={handleDropdown}>
+    <div className="relative inline-block text-left">
+      <div
+        className="flex items-center gap-2 py-4 px-2 sm:px-4 md:px-8 lg:px-12 bg-theme-color-1 text-background cursor-pointer hover:opacity-80"
+        onClick={handleDropdown}
+      >
         <div>Mumbai</div>
         <div>
           <IoMdArrowDropdown />
@@ -55,6 +57,6 @@ const LocationDropdownFull = () => {
         </div>
       )}
     </div>
-  );
-};
-export default LocationDropdownFull;
+  )
+}
+export default LocationDropdownFull

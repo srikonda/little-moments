@@ -1,15 +1,15 @@
-import React from 'react'
-import SignupLeftSide from '@/layouts/Registration/Signup/SignupLeftSide'
-import SignupProvider from '@/services/Context/SignupContext'
-import RightSide from '@/layouts/Registration/RightSide'
+import React from "react"
+import SignupLeftSide from "@/layouts/RegistrationPage/Signup/SignupLeftSide"
+import SignupProvider from "@/services/Context/SignupContext"
+import RightSide from "@/layouts/RegistrationPage/RightSide"
 
 const page = () => {
   return (
     <SignupProvider>
-    <div className='grid grid-cols-12 w-full h-screen'>
+      <div className="grid grid-cols-12 w-full h-screen">
         <SignupLeftSide />
-        <RightSide text='SIGN UP & GET STARTED' />
-    </div>
+        <RightSide text="SIGN UP & GET STARTED" />
+      </div>
     </SignupProvider>
   )
 }

@@ -1,51 +1,60 @@
-import React, { useState } from 'react'
-import { UseFormRegister } from "react-hook-form";
-import {RiErrorWarningFill} from 'react-icons/ri'
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import React from "react"
+import { UseFormRegister } from "react-hook-form"
+import { RiErrorWarningFill } from "react-icons/ri"
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
 
 type InputTextSocialLinksProps = {
-  type: string;
-  name: string;
-  placeholder: string;
-  register: UseFormRegister<any>;
-  required: boolean;
+  type: string
+  name: string
+  placeholder: string
+  register: UseFormRegister<any>
+  disabled?: boolean
+  required: boolean
   icon?: string
-  disabled?: boolean,
-  error: string | undefined;
+  error?: string | undefined
 }
-const InputTextSocialLinks = ({type, name, placeholder, register, required, icon, disabled, error}: InputTextSocialLinksProps) => {
-
+const InputTextSocialLinks = ({
+  type,
+  name,
+  placeholder,
+  register,
+  disabled,
+  required,
+  icon,
+  error,
+}: InputTextSocialLinksProps) => {
   const IconComponent = (() => {
     switch (icon) {
       case "facebook":
-        return FaFacebookF;
+        return FaFacebookF
       case "instagram":
-        return FaInstagram;
+        return FaInstagram
       case "youtube":
-        return FaYoutube;
+        return FaYoutube
       case "twitter":
-        return FaXTwitter;
+        return FaXTwitter
       default:
-        return RiErrorWarningFill;
+        return RiErrorWarningFill
     }
-  })();
+  })()
 
   return (
-    <div>
-      <div className='flex relative'>
+    <div className="w-full">
+      <div className="flex relative">
         <input
-            type={type}
-            className={`w-full autofill:bg-yellow-200 rounded-sm py-3 my-3 border-b text-xl border-primary focus:outline-none focus:ring-transparent ${disabled && "disabled:bg-gray-100 disabled:cursor-not-allowed"}`}
-            placeholder={placeholder}
-            {...register(name, { required })}
-            disabled={disabled} 
+          type={type}
+          className={`w-full autofill:bg-yellow-200 bg-transparent rounded-lg p-2 my-3 border-2  text-xl border-primary focus:outline-none focus:ring-transparent ${
+            disabled && "disabled:bg-gray-100 disabled:cursor-not-allowed"
+          }`}
+          placeholder={placeholder}
+          {...register(name, { required })}
         />
-        <div className='btn absolute flex right-2 top-2 transform translate-y-6'>
+        <div className="btn absolute flex right-3 top-2 transform translate-y-5">
           <IconComponent />
         </div>
       </div>
-        {error && <p className='text-red-600 text-sm'>{error}</p>}
+      {error && <p className="text-red-600 text-sm">{error}</p>}
     </div>
   )
 }
